@@ -5,8 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PayrollCalculation"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Payroll Calculator" Height="350" Width="500">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Margin="10,10,5,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="38*"/>
+                <RowDefinition Height="133*"/>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="35*"/>
+                <RowDefinition Height="62*"/>
+                <RowDefinition Height="31*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <TextBlock Text="Количество часов " Height="20"/>
+                <TextBox x:Name="CountOfHours" Width="100" Height="20" PreviewTextInput="NumberValidationTextBox"/>
+            </StackPanel>
+            <CheckBox x:Name="Nalog" Content="Подоходный налог 13%" Grid.Row="2" VerticalAlignment="Center" Click="CheckBox_Click"/>
+            <TextBlock x:Name="Information" Text="Начислено, в том числе налог" Grid.Row="4" VerticalAlignment="Center" TextWrapping="Wrap" Visibility="Hidden" FontSize="16"/>
+        </Grid>
+
+        <Grid Grid.Column="1" Margin="5,10,10,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="183*"/>
+                <RowDefinition Height="131*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Vertical" Grid.Row="0">
+                <TextBlock Text="Преподаватель" Margin="10,10,0,5" Height="auto"/>
+                <StackPanel x:Name="prepodTypes" Background="LightGray" VerticalAlignment="Stretch">
+                    <RadioButton GroupName="PrepodType" Content="ассистент" VerticalContentAlignment="Center" Margin="10,20,0,20"/>
+                    <RadioButton GroupName="PrepodType" Content="доцент" VerticalContentAlignment="Center" Margin="10,0,0,20"/>
+                    <RadioButton GroupName="PrepodType" Content="профессор" VerticalContentAlignment="Center" Margin="10,0,0,20"/>
+                </StackPanel>
+            </StackPanel>
+            <Button x:Name="CalculateBtn" Content="Вычислить" Grid.Row="1" Height="20" Width="75" VerticalAlignment="Bottom"  Margin="0,0,0,20" Click="Calculate_Click"/>
+
+        </Grid>
     </Grid>
 </Window>
